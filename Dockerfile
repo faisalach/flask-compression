@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 3000
 
 # Run the Flask app
-CMD ["python", "main.py"]
+CMD ["python", "compression.py"]
