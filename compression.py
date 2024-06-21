@@ -90,3 +90,5 @@ def video_h265():
     result  = compress_video_h265(path)
     return jsonify(result)
         
+if __name__ == '__main__':
+    app.run(debug=True,host="0.0.0.0",port=int(os.getenv("PORT",3000)))
