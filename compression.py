@@ -2,6 +2,7 @@ import os
 import time
 import random
 from flask import Flask, request,jsonify,send_from_directory
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
 from audio.mp3 import compress_audio_mp3
@@ -16,6 +17,8 @@ ALLOWED_EXTENSIONS = {'wav', 'mp4', 'jpg'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+CORS(app)
 
 def allowed_file(filename):
     return '.' in filename and \
