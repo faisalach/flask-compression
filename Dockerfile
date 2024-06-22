@@ -2,6 +2,10 @@
 # https://hub.docker.com/_/python
 FROM python:3.10-slim
 
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    && apt-get clean
+
 # Set environment variables
 ENV PYTHONUNBUFFERED True
 
@@ -21,4 +25,4 @@ COPY . .
 EXPOSE 3000
 
 # Run the Flask app
-CMD ["python", "compression.py"]
+CMD ["gunicorn", "-b", ":3000", "compression:app"]
